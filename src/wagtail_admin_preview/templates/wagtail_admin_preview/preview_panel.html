@@ -1,0 +1,39 @@
+{% load wagtailadmin_tags %}
+
+{%block content%}
+<style>
+	.preview-frame{
+		border: var(--border-width) dashed var(--border-color);
+		width: var(--width);
+		height: var(--height);
+	}
+
+</style>
+
+<div id="preview-target" style="padding-top:40px !important;"></div>
+<div class="w-flex w-justify-center w-py-3">
+	<button class="button" onclick="setFrameSize(event, '375px')">
+		{% icon name='mobile-screen' class_name='w-w-4 w-h-4'%}
+	</button>
+	<button class="button" onclick="setFrameSize(event, '768px')">
+		{% icon name='tablet-screen' class_name='w-w-4 w-h-4'%}
+	</button>
+	<button class="button" onclick="setFrameSize(event, '100%')">
+		{% icon name='desktop-screen' class_name='w-w-4 w-h-4'%}
+	</button>
+</div>
+<div class="w-flex w-justify-center w-pt-3">
+	<iframe class="preview-frame" id="preview-frame" srcdoc="{{self.rendered}}"
+					style="--border-width: 2px; --border-color: #F00; --width: 100%; --height: calc(100vh - 260px);">
+	</iframe>
+</div>
+<script>
+	function setFrameSize(event, size){
+		event.preventDefault();
+		console.log(event, size);
+		var frame = document.querySelector('iframe#preview-frame');
+		frame.style.setProperty('--width', size);
+	}
+
+</script>
+{%endblock%}
