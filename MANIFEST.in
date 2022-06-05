@@ -1,8 +1,8 @@
 include LICENSE
 include README.md
-global-include wagtail_admin_preview/templates *
+global-include src/wagtail_admin_preview/templates *
 global-exclude .git
 global-exclude .git/ *
 global-exclude .gitignore
-global-exclude *.py[co]
 global-exclude __pycache__
+global-exclude *.pyc

@@ -2,3 +2,5 @@
 dist/*
 build/*
 *.egg-info
+wagtail-admin-preview-*
+wagtail-admin-preview-*/**/*

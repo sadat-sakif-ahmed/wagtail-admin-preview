@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.template.loader import get_template
 from wagtail.admin.panels import Panel
 
@@ -17,7 +18,13 @@ class AdminPreviewPanel(Panel):
 			panel = get_template(self.template_name)
 			if parent_context is None:
 				parent_context = {}
+
+			try:
+				sizes = settings.__getattr__('WAGTAIL_ADMIN_PREVIEW_BREAKPOINTS')
+			except AttributeError:
+				sizes = [375, 766, 1278]
+
 			parent_context.update(
-				{'self': self}
+				{'self': self, 'sizes': sizes}
 			)
 			return panel.render(parent_context)
