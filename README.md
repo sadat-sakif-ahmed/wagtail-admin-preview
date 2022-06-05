@@ -28,3 +28,13 @@ very minimal footprint on your project.
 This module requires:  
     1. Python >= 3.7 and  
     2. wagtail >= 3.0
+
+## Configurations
+
+You can configure the set of preview breakpoints by adding an array `WAGTAIL_ADMIN_PREVIEW_BREAKPOINTS` variable in your settings file.
+
+*Please note that the breakpoints are only in pixels as of now. Future releases might support other units.* 
+
+    ```python
+    WAGTAIL_ADMIN_PREVIEW_BREAKPOINTS = [320, 528, 1366, 1920,4200]
+    ```
